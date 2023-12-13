@@ -83,22 +83,19 @@ class BardMapsPoint:
         )
 
     def __str__(self) -> str:
-        place_type = self.place_type_and_lang
-        if place_type:
+        if place_type := self.place_type_and_lang:
             place_type = " - " + place_type[0]
         else:
             place_type = ""
         return f"{self.title[0]}{place_type}"
 
     def markdown(self) -> str:
-        description = self.description()
-        if description:
+        if description := self.description():
             description = "\n" + description[0]
         else:
             description = ""
 
-        place_type = self.place_type_and_lang
-        if place_type:
+        if place_type := self.place_type_and_lang:
             place_type = place_type[0]
         else:
             place_type = ""
