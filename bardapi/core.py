@@ -321,8 +321,8 @@ class Bard:
         if not resp_json:
             raise {
                 "content": f"Response Error: {resp.content}. "
-                f"\nUnable to get response."
-                f"\nPlease double-check the cookie values and verify your network environment or google account."
+                "\nUnable to get response."
+                "\nPlease double-check the cookie values and verify your network environment or google account."
             }
 
         res = BardResult(resp_json)
@@ -445,8 +445,8 @@ class Bard:
         if not resp_dict:
             return {
                 "content": f"Response Error: {resp.content}. "
-                f"\nUnable to get response."
-                f"\nPlease double-check the cookie values and verify your network environment or google account."
+                "\nUnable to get response."
+                "\nPlease double-check the cookie values and verify your network environment or google account."
             }
         resp_json = json.loads(resp_dict)
         if resp_json[4] is None:
@@ -568,8 +568,8 @@ class Bard:
         if not resp_dict:
             return {
                 "content": f"Response Error: {resp.content}. "
-                f"\nUnable to get response."
-                f"\nPlease double-check the cookie values and verify your network environment or google account."
+                "\nUnable to get response."
+                "\nPlease double-check the cookie values and verify your network environment or google account."
             }
         resp_json = json.loads(resp_dict)
         audio_b64 = resp_json[0]
@@ -739,8 +739,8 @@ class Bard:
         if not resp_dict:
             return {
                 "content": f"Response Error: {resp.content}. "
-                f"\nUnable to get response."
-                f"\nPlease double-check the cookie values and verify your network environment or google account."
+                "\nUnable to get response."
+                "\nPlease double-check the cookie values and verify your network environment or google account."
             }
         parsed_answer = json.loads(resp_dict)
         content = parsed_answer[4][0][1][0]

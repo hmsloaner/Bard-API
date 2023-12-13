@@ -380,8 +380,8 @@ class BardAsync:
         if not resp_dict:
             return {
                 "content": f"Response Error: {resp.content}. "
-                f"\nTemporarily unavailable due to traffic or an error in cookie values. "
-                f"Please double-check the cookie values and verify your network environment."
+                "\nTemporarily unavailable due to traffic or an error in cookie values. "
+                "Please double-check the cookie values and verify your network environment."
             }
         resp_json = json.loads(resp_dict)
         audio_b64 = resp_json[0]
@@ -688,8 +688,8 @@ class BardAsync:
         if not resp_dict:
             return {
                 "content": f"Response Error: {resp.content}. "
-                f"\nUnable to get response."
-                f"\nPlease double-check the cookie values and verify your network environment or google account."
+                "\nUnable to get response."
+                "\nPlease double-check the cookie values and verify your network environment or google account."
             }
         parsed_answer = json.loads(resp_dict)
         content = parsed_answer[4][0][1][0]
@@ -809,8 +809,8 @@ class BardAsync:
         if not resp_json:
             raise {
                 "content": f"Response Error: {resp.content}. "
-                f"\nUnable to get response."
-                f"\nPlease double-check the cookie values and verify your network environment or google account."
+                "\nUnable to get response."
+                "\nPlease double-check the cookie values and verify your network environment or google account."
             }
 
         res = BardResult(resp_json)
