@@ -2,7 +2,6 @@
 import base64
 import json
 import os
-import random
 import re
 import string
 from urllib.parse import parse_qs, urlparse
@@ -11,6 +10,7 @@ import requests
 
 # Third-party imports
 from typing import Optional
+import secrets
 
 try:
     from langdetect import detect
@@ -72,7 +72,7 @@ class Bard:
         self.token = self._get_token(token, token_from_browser)
         self.proxies = proxies
         self.timeout = timeout
-        self._reqid = int("".join(random.choices(string.digits, k=4)))
+        self._reqid = int("".join(secrets.SystemRandom().choices(string.digits, k=4)))
         self.conversation_id = conversation_id or ""
         self.response_id = ""
         self.choice_id = ""

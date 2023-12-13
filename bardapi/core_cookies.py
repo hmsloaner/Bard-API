@@ -1,7 +1,6 @@
 import os
 import re
 import string
-import random
 import requests
 from httpx import AsyncClient
 from typing import Optional
@@ -9,6 +8,7 @@ from bardapi.core import Bard
 from bardapi.core_async import BardAsync
 from bardapi.constants import SESSION_HEADERS
 from bardapi.utils import extract_bard_cookie
+import secrets
 
 
 class BardCookies(Bard):
@@ -45,7 +45,7 @@ class BardCookies(Bard):
         self.cookie_dict = cookie_dict or self._get_token(token_from_browser)
         self.proxies = proxies
         self.timeout = timeout
-        self._reqid = int("".join(random.choices(string.digits, k=4)))
+        self._reqid = int("".join(secrets.SystemRandom().choices(string.digits, k=4)))
         self.conversation_id = conversation_id or ""
         self.response_id = ""
         self.choice_id = ""
@@ -303,7 +303,7 @@ class BardAsyncCookies(BardAsync):
         self.cookie_dict = cookie_dict or self._get_token(token_from_browser)
         self.timeout = timeout
         self.proxies = proxies
-        self._reqid = int("".join(random.choices(string.digits, k=4)))
+        self._reqid = int("".join(secrets.SystemRandom().choices(string.digits, k=4)))
         self.conversation_id = conversation_id or ""
         self.response_id = ""
         self.choice_id = ""
