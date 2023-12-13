@@ -1,11 +1,11 @@
 import json
 import uuid
 import string
-import random
 import base64
 from typing import Optional
 from re import search
 from httpx import AsyncClient
+import secrets
 
 try:
     from deep_translator import GoogleTranslator
@@ -65,7 +65,7 @@ class BardAsync:
         self.token = token or self._get_token(token_from_browser)
         self.proxies = proxies
         self.timeout = timeout
-        self._reqid = int("".join(random.choices(string.digits, k=4)))
+        self._reqid = int("".join(secrets.SystemRandom().choices(string.digits, k=4)))
         self.conversation_id = conversation_id or ""
         self.response_id = ""
         self.choice_id = ""

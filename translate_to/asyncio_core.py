@@ -1,12 +1,12 @@
 import os
 import string
-import random
 import json
 import re
 import aiohttp
 import asyncio
 from deep_translator import GoogleTranslator
 from bardapi.constants import ALLOWED_LANGUAGES, SESSION_HEADERS
+import secrets
 
 
 class Bard:
@@ -35,7 +35,7 @@ class Bard:
         self.token = token or os.getenv("_BARD_API_KEY")
         self.proxies = proxies
         self.timeout = timeout
-        self._reqid = int("".join(random.choices(string.digits, k=4)))
+        self._reqid = int("".join(secrets.SystemRandom().choices(string.digits, k=4)))
         self.conversation_id = ""
         self.response_id = ""
         self.choice_id = ""
