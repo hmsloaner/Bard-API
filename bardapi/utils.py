@@ -38,7 +38,7 @@ def upload_image(image: bytes, filename: str = "Photo.jpg"):
     Returns:
         str: relative URL of image.
     """
-    resp = requests.options("https://content-push.googleapis.com/upload/")
+    resp = requests.options("https://content-push.googleapis.com/upload/", timeout=60)
     resp.raise_for_status()
     size = len(image)
 
@@ -48,17 +48,17 @@ def upload_image(image: bytes, filename: str = "Photo.jpg"):
 
     data = f"File name: {filename}"
     resp = requests.post(
-        "https://content-push.googleapis.com/upload/", headers=headers, data=data
-    )
+        "https://content-push.googleapis.com/upload/", headers=headers, data=data, 
+    timeout=60)
     resp.raise_for_status()
     upload_url = resp.headers["X-Goog-Upload-Url"]
-    resp = requests.options(upload_url, headers=headers)
+    resp = requests.options(upload_url, headers=headers, timeout=60)
     resp.raise_for_status()
     headers["x-goog-upload-command"] = "upload, finalize"
 
     # It can be that we need to check returned offset
     headers["X-Goog-Upload-Offset"] = "0"
-    resp = requests.post(upload_url, headers=headers, data=image)
+    resp = requests.post(upload_url, headers=headers, data=image, timeout=60)
     resp.raise_for_status()
     return resp.text
 
